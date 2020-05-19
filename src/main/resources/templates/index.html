@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/css/site.css}" rel="stylesheet" media="screen" />
+</head>
+<body>
+<div class="container" layout:fragment="container">
+    <div class="row">
+        <div class="col-2" >
+            <a th:href="@{'/Post/index'}">view</a>
+            <a th:href="@{'/Post/create'}">Create</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
