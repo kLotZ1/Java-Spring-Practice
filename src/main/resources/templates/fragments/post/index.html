@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+<body>
+
+<div class="container" layout:fragment="container">
+    <div class="blog-posts">
+        <div class="blog-posts-actions">
+            <a th:href="@{'/post/create'}">Create</a>
+        </div>
+
+        <div class="blog-posts-items" th:each="item:${model}">
+
+            <div class="blog-post panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        <a th:utext="${item.Title}">..</a>
+                    </h3>
+                    <div>
+                        <li th:utext="${item.Created}">..</li>
+                    </div>
+                    <div>
+                        <li th:utext="${item.postcategories.Name}">..</li>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <div class="blog-post-text" th:utext="${item.Text}">..</div>
+                <div class="blog-post-actions">
+                    <a class="btn btn-default">Read More</a>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="blog-post-additional">
+                    comment(s), attachment(s)
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.example.backend6;
+package com.example.backend6.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
 

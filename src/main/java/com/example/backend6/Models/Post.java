@@ -1,9 +1,6 @@
 package com.example.backend6.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -16,15 +13,17 @@ public class Post {
 
     private String Text;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "postcategories_id")
+    private PostCategories postcategories;
+
     private Date Created;
 
     private Date Modified;
 
-
     public void setText(String text) {
         Text = text;
     }
-
 
     public Date getModified() {
         return Modified;
@@ -61,4 +60,9 @@ public class Post {
     public void setCreated(Date created) {
         Created = created;
     }
+
+
+    public PostCategories getPostcategories() { return postcategories; }
+
+    public void setPostcategories(PostCategories postcategories) { this.postcategories = postcategories; }
 }

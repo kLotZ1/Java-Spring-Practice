@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+<body>
+
+<div class="container" layout:fragment="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Post Categories
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <a th:href="@{'/postcategories/create'}">Create new</a>
+        </tr>
+        </thead>
+        <tbody th:each="item:${model}">
+        <tr>
+            <td th:utext="${item.Name}">
+                ..
+            </td>
+            <td>
+                <a>Edit</a> |
+                <a>Details</a> |
+                <a>Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
