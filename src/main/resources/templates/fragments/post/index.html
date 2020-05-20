@@ -9,12 +9,12 @@
             <a th:href="@{'/post/create'}">Create</a>
         </div>
 
-        <div class="blog-posts-items" th:each="item:${model}">
+        <div class="blog-posts-items" th:each="item:${model}" >
 
             <div class="blog-post panel panel-default">
                 <div class="panel-heading">
                     <h3>
-                        <a th:utext="${item.Title}">..</a>
+                        <a th:utext="${item.Title}" th:href="@{/post/details/{id}(id = ${item.id})}">..</a>
                     </h3>
                     <div>
                         <li th:utext="${item.Created}">..</li>

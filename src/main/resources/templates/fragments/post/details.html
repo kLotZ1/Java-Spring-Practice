@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div class="container" layout:fragment="container" >
+        <div class="blog-post-details" >
+            <h1 th:text="${post.Title}">..</h1>
+            <div class="blog-post-info">
+
+                <text>|</text> <a >Edit</a>
+                <text>|</text> <a>Delete</a>
+            </div>
+
+            <div class="blog-post-text" th:text="${post.Text}">..</div>
+        </div>
+</div>
+</div>
+</html>

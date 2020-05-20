@@ -12,7 +12,7 @@ import java.time.Instant;
 import java.util.Date;
 
 @Controller
-@RequestMapping(path="/post")
+@RequestMapping(path = "/post")
 public class PostController {
     @Autowired
     private PostRepository postRepository;
@@ -20,7 +20,7 @@ public class PostController {
     private PostCategoriesRepository postCategoriesRepository;
 
     @PostMapping("/create")
-    public String createPost(@ModelAttribute("model") Post model){
+    public String createPost(@ModelAttribute("model") Post model) {
         Post tPost = new Post();
         tPost.setText(model.getText());
         tPost.setTitle(model.getTitle());
@@ -30,14 +30,22 @@ public class PostController {
         postRepository.save(tPost);
         return "redirect:/post/index";
     }
+
     @GetMapping("/create")
-    public String createGet(Model model){
+    public String createGet(Model model) {
         model.addAttribute("post", new Post());
-        model.addAttribute("categories",postCategoriesRepository.findAll());
+        model.addAttribute("categories", postCategoriesRepository.findAll());
         return "fragments/post/create";
     }
+
+    @GetMapping("/details/{id}")
+    public String postDetailsGet(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("post", postRepository.findById(id).get());
+        return "fragments/post/details";
+    }
+
     @GetMapping("/index")
-    public String getAllPosts(Model model){
+    public String getAllPosts(Model model) {
         model.addAttribute("model", postRepository.findAll());
         return "fragments/post/index";
     }
