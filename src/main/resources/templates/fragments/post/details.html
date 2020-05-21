@@ -8,7 +8,7 @@
             <div class="blog-post-info">
 
                 <text>|</text> <a >Edit</a>
-                <text>|</text> <a>Delete</a>
+                <text>|</text> <a th:href="@{/post/delete/{id}(id = ${post.id})}">Delete</a>
             </div>
 
             <div class="blog-post-text" th:text="${post.Text}">..</div>

@@ -37,6 +37,19 @@ public class PostController {
         model.addAttribute("categories", postCategoriesRepository.findAll());
         return "fragments/post/create";
     }
+    @GetMapping("/delete/{id}")
+    public String postDeleteGet(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("post", postRepository.findById(id).get());
+        return "fragments/post/delete";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String postDeletePost(@ModelAttribute("post") Post model) {
+        Post tPost = postRepository.findById(model.getId()).get();
+
+        postRepository.delete(tPost);
+        return "redirect:/post/index";
+    }
 
     @GetMapping("/details/{id}")
     public String postDetailsGet(@PathVariable("id") Integer id, Model model) {

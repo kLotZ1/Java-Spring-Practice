@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}" xmlns:th="http://www.w3.org/1999/xhtml">
+<div class="container" layout:fragment="container" >
+
+    <form action="#" th:object="${post}" th:action="@{'/post/delete/'+ ${id}}"  method="post">
+        <div class="form-actions no-color">
+            <input  type="submit" value="Delete" class="btn btn-default" /> |
+            <a th:href="@{/post/details/{id}(id = ${post.id})}">Back to Post</a>
+        </div>
+    </form>
+</div>
+</html>
