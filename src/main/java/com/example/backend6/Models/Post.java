@@ -13,7 +13,7 @@ public class Post {
 
     private String Text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "postcategories_id")
     private PostCategories postcategories;
 
