@@ -44,8 +44,8 @@ public class PostController {
     }
 
     @PostMapping("/delete/{id}")
-    public String postDeletePost(@ModelAttribute("post") Post model) {
-        Post tPost = postRepository.findById(model.getId()).get();
+    public String postDeletePost(@PathVariable("id") Integer id) {
+        Post tPost = postRepository.findById(id).get();
 
         postRepository.delete(tPost);
         return "redirect:/post/index";
