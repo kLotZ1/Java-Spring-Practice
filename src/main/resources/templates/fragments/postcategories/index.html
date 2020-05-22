@@ -16,13 +16,13 @@
             <a th:href="@{'/postcategories/create'}">Create new</a>
         </tr>
         </thead>
-        <tbody th:each="item:${model}">
+        <tbody th:each="item:${postcategory}">
         <tr>
             <td th:utext="${item.Name}">
                 ..
             </td>
             <td>
-                <a>Edit</a> |
+                <a th:href="@{/postcategories/edit/{id}(id = ${item.id})}">Edit</a> |
                 <a>Details</a> |
                 <a>Delete</a>
             </td>

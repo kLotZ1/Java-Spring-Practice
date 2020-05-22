@@ -3,14 +3,14 @@
       layout:decorate="~{layouts/layout}" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <div class="container" layout:fragment="container">
-    <form action="#" th:action="@{/postcategories/create}" th:object="${postcategory}" method="post">
+    <form action="#" th:action="@{'/postcategories/edit/'+ ${id}}" th:object="${postcategory}" method="post">
         <div class="form-horizontal">
             <hr/>
             <div class="text-danger"></div>
             <div class="form-group">
                 <label class="col-md-2 control-label">Name</label>
                 <div class="col-md-10">
-                    <input id="Title" th:field="*{Name}" class="form-control"/>
+                    <input id="Name" th:field="*{Name}" class="form-control"/>
                     <span class="text-danger"></span>
                 </div>
             </div>

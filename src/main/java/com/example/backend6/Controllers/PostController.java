@@ -1,7 +1,7 @@
 package com.example.backend6.Controllers;
 
 import com.example.backend6.Models.Post;
-import com.example.backend6.Models.ViewModels.postViewModel;
+import com.example.backend6.Models.ViewModels.PostViewModel;
 import com.example.backend6.Repositories.PostCategoriesRepository;
 import com.example.backend6.Repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +20,16 @@ public class PostController {
     @Autowired
     private PostCategoriesRepository postCategoriesRepository;
 
+    //CREATE
     @GetMapping("/create")
     public String createGet(Model model) {
-        model.addAttribute("post", new postViewModel());
+        model.addAttribute("post", new PostViewModel());
         model.addAttribute("categories", postCategoriesRepository.findAll());
         return "fragments/post/create";
     }
 
     @PostMapping("/create")
-    public String createPost(@ModelAttribute("model") postViewModel model) {
+    public String createPost(@ModelAttribute("model") PostViewModel model) {
         Post tPost = new Post();
         tPost.setText(model.getText());
         tPost.setTitle(model.getTitle());
@@ -39,7 +40,7 @@ public class PostController {
         return "redirect:/post/index";
     }
 
-
+    //DELETE
     @GetMapping("/delete/{id}")
     public String postDeleteGet(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("post", postRepository.findById(id).get());
@@ -59,7 +60,7 @@ public class PostController {
 
         Post post = postRepository.findById(id).get();
 
-        postViewModel postViewModel = new postViewModel();
+        PostViewModel postViewModel = new PostViewModel();
         postViewModel.setTitle(post.getTitle());
         postViewModel.setText(post.getText());
         postViewModel.setPostcategories(post.getPostcategories());
@@ -68,7 +69,7 @@ public class PostController {
         return "fragments/post/edit";
     }
     @PostMapping("/edit/{id}")
-    public String postEditPost(@ModelAttribute("model") postViewModel model, @PathVariable("id") Integer id) {
+    public String postEditPost(@ModelAttribute("model") PostViewModel model, @PathVariable("id") Integer id) {
         Post tPost = postRepository.findById(id).get();
         tPost.setText(model.getText());
         tPost.setTitle(model.getTitle());

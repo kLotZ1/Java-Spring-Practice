@@ -2,7 +2,7 @@ package com.example.backend6.Models.ViewModels;
 
 import com.example.backend6.Models.PostCategories;
 
-public class postViewModel {
+public class PostViewModel {
 
     private String Text;
 

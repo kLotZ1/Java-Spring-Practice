@@ -12,7 +12,7 @@ public class PostCategories {
 
     private String Name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "postcategories")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "postcategories")
     private Set<Post> Posts;
 
     public Integer getId() {
