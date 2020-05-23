@@ -35,7 +35,7 @@ public class PostController {
         tPost.setTitle(model.getTitle());
         tPost.setCreated(Date.from(Instant.now()));
         tPost.setModified(Date.from(Instant.now()));
-        tPost.setPostcategories(model.getPostcategories());
+        tPost.setPostcategories(model.getPostcategory());
         postRepository.save(tPost);
         return "redirect:/post/index";
     }
@@ -49,9 +49,8 @@ public class PostController {
 
     @PostMapping("/delete/{id}")
     public String postDeletePost(@PathVariable("id") Integer id) {
-        Post tPost = postRepository.findById(id).get();
 
-        postRepository.delete(tPost);
+        postRepository.deleteById(id);
         return "redirect:/post/index";
     }
 
@@ -63,7 +62,7 @@ public class PostController {
         PostViewModel postViewModel = new PostViewModel();
         postViewModel.setTitle(post.getTitle());
         postViewModel.setText(post.getText());
-        postViewModel.setPostcategories(post.getPostcategories());
+        postViewModel.setPostcategory(post.getPostcategories());
         model.addAttribute("post", postViewModel);
         model.addAttribute("categories", postCategoriesRepository.findAll());
         return "fragments/post/edit";
@@ -74,7 +73,7 @@ public class PostController {
         tPost.setText(model.getText());
         tPost.setTitle(model.getTitle());
         tPost.setModified(Date.from(Instant.now()));
-        tPost.setPostcategories(model.getPostcategories());
+        tPost.setPostcategories(model.getPostcategory());
         postRepository.save(tPost);
         return "redirect:/post/index";
     }

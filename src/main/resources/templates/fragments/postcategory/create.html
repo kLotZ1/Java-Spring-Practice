@@ -3,7 +3,7 @@
       layout:decorate="~{layouts/layout}" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <div class="container" layout:fragment="container">
-    <form action="#" th:action="@{'/postcategories/edit/'+ ${id}}" th:object="${postcategory}" method="post">
+    <form action="#" th:action="@{/postcategory/create}" th:object="${postcategory}" method="post">
         <div class="form-horizontal">
             <hr/>
             <div class="text-danger"></div>

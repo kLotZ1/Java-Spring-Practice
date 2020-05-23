@@ -12,7 +12,7 @@ public class PostCategories {
 
     private String Name;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "postcategories", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "postcategories", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Post> Posts;
 
     public Integer getId() {

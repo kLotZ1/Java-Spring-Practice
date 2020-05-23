@@ -1,7 +1,11 @@
 package com.example.backend6.Models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -16,6 +20,10 @@ public class Post {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "postcategories_id")
     private PostCategories postcategories;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private Set<PostCommentary> postCommentaries;
 
     private Date Created;
 
@@ -61,8 +69,19 @@ public class Post {
         Created = created;
     }
 
+    public PostCategories getPostcategories() {
+        return postcategories;
+    }
 
-    public PostCategories getPostcategories() { return postcategories; }
+    public void setPostcategories(PostCategories postcategories) {
+        this.postcategories = postcategories;
+    }
 
-    public void setPostcategories(PostCategories postcategories) { this.postcategories = postcategories; }
+    public Set<PostCommentary> getPostCommentaries() {
+        return postCommentaries;
+    }
+
+    public void setPostCommentaries(Set<PostCommentary> postCommentaries) {
+        this.postCommentaries = postCommentaries;
+    }
 }

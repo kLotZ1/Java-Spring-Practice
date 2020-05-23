@@ -13,7 +13,7 @@
             <th></th>
         </tr>
         <tr>
-            <a th:href="@{'/postcategories/create'}">Create new</a>
+            <a th:href="@{'/postcategory/create'}">Create new</a>
         </tr>
         </thead>
         <tbody th:each="item:${postcategory}">
@@ -22,8 +22,8 @@
                 ..
             </td>
             <td>
-                <a th:href="@{/postcategories/edit/{id}(id = ${item.id})}">Edit</a> |
-                <a th:href="@{/postcategories/delete/{id}(id = ${item.id})}">Delete</a>
+                <a th:href="@{/postcategory/edit/{id}(id = ${item.id})}">Edit</a> |
+                <a th:href="@{/postcategory/delete/{id}(id = ${item.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

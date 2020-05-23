@@ -1,6 +1,6 @@
 package com.example.backend6.Models.ViewModels;
 
-public class PostCategoriesViewModel {
+public class PostCategoryViewModel {
 
     private String Name;
 

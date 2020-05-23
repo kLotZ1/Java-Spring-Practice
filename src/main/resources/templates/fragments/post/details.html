@@ -21,17 +21,41 @@
         <a th:href="@{/postattachment/create/{id}(id = ${post.id})}" class="btn btn-default">Create New</a>
     </p>
 
-<!--    <div class="row">-->
-<!--        <div class="col-sm-6 col-md-4">-->
-<!--            <div class="thumbnail">-->
-<!--                <img src="@item.Path" alt="Image"/>-->
-<!--                <div class="caption">-->
-<!--                    <p><a asp-action="Delete" asp-controller="PostAttachments" asp-route-id="@item.Id"-->
-<!--                          class="btn btn-danger">Delete</a></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <h3>Commentaries</h3>
+
+    <p>
+        <a th:href="@{/postcommentary/create/{id}(id = ${post.id})}" class="btn btn-default">Create New</a>
+    </p>
+
+    <div class="blog-posts">
+        <div class="blog-posts-items" th:each="item:${post.postCommentaries}">
+            <div class="blog-post panel panel-default">
+                <div class="panel-heading">
+                    <div> @item.Creator.UserName | @item.Created
+
+                        <text>| <a>Edit</a></text>
+                        <text>| <a>Delete</a></text>
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="blog-post-text" th:text="${item.text}">@item.Text</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--    <div class="row">-->
+    <!--        <div class="col-sm-6 col-md-4">-->
+    <!--            <div class="thumbnail">-->
+    <!--                <img src="@item.Path" alt="Image"/>-->
+    <!--                <div class="caption">-->
+    <!--                    <p><a asp-action="Delete" asp-controller="PostAttachments" asp-route-id="@item.Id"-->
+    <!--                          class="btn btn-danger">Delete</a></p>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
 </div>
 </html>

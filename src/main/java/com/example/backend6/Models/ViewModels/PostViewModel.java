@@ -8,14 +8,14 @@ public class PostViewModel {
 
     private String Title;
 
-    private PostCategories postcategories;
+    private PostCategories postcategory;
 
-    public PostCategories getPostcategories() {
-        return postcategories;
+    public PostCategories getPostcategory() {
+        return postcategory;
     }
 
-    public void setPostcategories(PostCategories postcategories) {
-        this.postcategories = postcategories;
+    public void setPostcategory(PostCategories postcategory) {
+        this.postcategory = postcategory;
     }
 
     public String getTitle() {
