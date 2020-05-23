@@ -21,7 +21,7 @@ public class PostCategoriesController {
     private PostCategoriesRepository postCategoriesRepository;
 
     @PostMapping("/create")
-    public String createPost(@ModelAttribute("postcategory") PostCategories model) {
+    public String createPostCat(@ModelAttribute("postcategory") PostCategories model) {
         PostCategories tPostCat = new PostCategories();
         tPostCat.setName(model.getName());
         postCategoriesRepository.save(tPostCat);
@@ -29,7 +29,7 @@ public class PostCategoriesController {
     }
 
     @GetMapping("/create")
-    public String createGet(Model model) {
+    public String createPostCat(Model model) {
         model.addAttribute("postcategory", new PostCategories());
         return "fragments/postcategories/create";
     }
@@ -52,10 +52,24 @@ public class PostCategoriesController {
     }
 
     @PostMapping("/edit/{id}")
-    public String postEditPost(@ModelAttribute("model") PostCategoriesViewModel model, @PathVariable("id") Integer id) {
+    public String postCatEditPost(@ModelAttribute("model") PostCategoriesViewModel model, @PathVariable("id") Integer id) {
         PostCategories postCat = postCategoriesRepository.findById(id).get();
         postCat.setName(model.getName());
         postCategoriesRepository.save(postCat);
+        return "redirect:/postcategories/index";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String postCatDeleteGet(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("postcategory", postCategoriesRepository.findById(id).get());
+        return "fragments/postcategories/delete";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String postDeletePost(@PathVariable("id") Integer id) {
+        PostCategories tPostCat = postCategoriesRepository.findById(id).get();
+
+        postCategoriesRepository.delete(tPostCat);
         return "redirect:/postcategories/index";
     }
 }

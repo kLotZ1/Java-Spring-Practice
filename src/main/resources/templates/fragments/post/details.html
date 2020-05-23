@@ -2,16 +2,36 @@
 <html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/layout}" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<div class="container" layout:fragment="container" >
-        <div class="blog-post-details" >
-            <h1 th:text="${post.Title}">..</h1>
-            <div class="blog-post-info">
+<div class="container" layout:fragment="container">
+    <div class="blog-post-details">
+        <h1 th:text="${post.Title}">..</h1>
+        <div class="blog-post-info">
 
-                <text>|</text> <a th:href="@{/post/edit/{id}(id = ${post.id})}">Edit</a>
-                <text>|</text> <a th:href="@{/post/delete/{id}(id = ${post.id})}">Delete</a>
-            </div>
-
-            <div class="blog-post-text" th:text="${post.Text}">..</div>
+            <text>|</text>
+            <a th:href="@{/post/edit/{id}(id = ${post.id})}">Edit</a>
+            <text>|</text>
+            <a th:href="@{/post/delete/{id}(id = ${post.id})}">Delete</a>
         </div>
+
+        <div class="blog-post-text" th:text="${post.Text}">..</div>
+    </div>
+    <h3>Attachments</h3>
+
+    <p>
+        <a th:href="@{/postattachment/create/{id}(id = ${post.id})}" class="btn btn-default">Create New</a>
+    </p>
+
+<!--    <div class="row">-->
+<!--        <div class="col-sm-6 col-md-4">-->
+<!--            <div class="thumbnail">-->
+<!--                <img src="@item.Path" alt="Image"/>-->
+<!--                <div class="caption">-->
+<!--                    <p><a asp-action="Delete" asp-controller="PostAttachments" asp-route-id="@item.Id"-->
+<!--                          class="btn btn-danger">Delete</a></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
 </div>
 </html>
