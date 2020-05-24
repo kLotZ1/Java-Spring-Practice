@@ -1,6 +1,7 @@
 package com.example.backend6.Controllers;
 
 import com.example.backend6.Models.Post;
+import com.example.backend6.Models.PostCategories;
 import com.example.backend6.Models.PostCommentary;
 import com.example.backend6.Models.ViewModels.PostCommentaryViewModel;
 import com.example.backend6.Repositories.PostCommentaryRepository;
@@ -44,6 +45,20 @@ public class PostCommentaryController {
 
         postCommentaryRepository.save(newComment);
 
+        return "redirect:/post/index";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String postCatDeleteGet(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("postcommentary", postCommentaryRepository.findById(id).get());
+        return "fragments/postcommentary/delete";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String postDeletePost(@PathVariable("id") Integer id) {
+        PostCommentary postComment = postCommentaryRepository.findById(id).get();
+
+        postCommentaryRepository.delete(postComment);
         return "redirect:/post/index";
     }
 }

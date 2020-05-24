@@ -31,10 +31,11 @@
         <div class="blog-posts-items" th:each="item:${post.postCommentaries}">
             <div class="blog-post panel panel-default">
                 <div class="panel-heading">
-                    <div> @item.Creator.UserName | @item.Created
-
+                    <div>
+                        @item.Creator.UserName |
+                        <li th:text="${item.Created}"></li>
                         <text>| <a>Edit</a></text>
-                        <text>| <a>Delete</a></text>
+                        <text>| <a th:href="@{/postcommentary/delete/{id}(id = ${item.id})}">Delete</a></text>
 
                     </div>
                 </div>

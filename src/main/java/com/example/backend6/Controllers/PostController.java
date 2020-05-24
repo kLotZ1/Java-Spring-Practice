@@ -51,7 +51,7 @@ public class PostController {
     public String postDeletePost(@PathVariable("id") Integer id) {
 
         postRepository.deleteById(id);
-        return "redirect:/post/index";
+        return "redirect:/post/index/";
     }
 
     @GetMapping("/edit/{id}")
@@ -75,7 +75,7 @@ public class PostController {
         tPost.setModified(Date.from(Instant.now()));
         tPost.setPostcategories(model.getPostcategory());
         postRepository.save(tPost);
-        return "redirect:/post/index";
+        return "redirect:/post/details/{id}";
     }
 
     @GetMapping("/details/{id}")

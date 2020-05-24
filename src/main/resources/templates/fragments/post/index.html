@@ -14,13 +14,13 @@
             <div class="blog-post panel panel-default">
                 <div class="panel-heading">
                     <h3>
-                        <a th:utext="${item.Title}" th:href="@{/post/details/{id}(id = ${item.id})}">..</a>
+                        <a th:text="${item.Title}" th:href="@{/post/details/{id}(id = ${item.id})}">..</a>
                     </h3>
                     <div>
-                        <li th:utext="${item.Created}">..</li>
+                        <li th:text="${item.Created}">..</li>
                     </div>
                     <div>
-                        <li th:utext="${item.postcategories.Name}">..</li>
+                        <li th:text="${item.postcategories.Name}">..</li>
                     </div>
                 </div>
 
